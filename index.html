@@ -80,7 +80,7 @@
             </div>
         </section>
 	
-	<!-- Filters-->	
+	<!-- Filters	
         <section class="page-section bg-light" id="filters">
             <div class="container">
                 <div class="text-center">
@@ -92,7 +92,7 @@
         </section>
     
         <!-- Calendar Grid-->
-        <section class="page-section" id="calendar">
+        <!-- <section class="page-section" id="calendar">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Financial Journal Calendar</h2>
@@ -103,14 +103,14 @@
 
                 </div>
             </div>
-        </section>
+        </section> --> -->
                 
         <!-- Plot-->
         <section class="page-section bg-light" id="plot">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Plot</h2>
-                    <h3 class="section-subheading text-muted">Plotting price of GSPC over time.<br>The plot was created using chart.js</h3>
+                    <h3 class="section-subheading text-muted">Plotting price of BTC over time.<br>The plot was created using chart.js</h3>
                 </div>
                 <div id="chartjsline"></div>
             </div>
@@ -133,7 +133,7 @@
                             </div>
                             <div class="timeline-body"><p class="text-muted">We utilized CryptoCompare API to pull blockchain data for Bitcoin. The API allowed us to pull very specific data from a large timeframe. The scraped data records the date and time, open, high, low, close, and volume traded per day. We first exported the raw data into a CSV format in order to manipulate and test the data.
                                 <br>
-                                <br>We also pulled ~1 million news articles about finance that goes back 20 years to run sentiment analysis with a pre-trained model FinBERT. This model built on BERT, a machine learning technique for natural language processing, and focused on financial languages. This mean we could load in our news articles and the model would loop through each one and calculate a score to determine if the article is positive, neutral, or negative. The model had to be trained first by downloading a phrasebank online. We then set up model training in a Jupyter notebook, where we've set up training parameters. Once everything was set up, we then ran the analysis through all the news article and exported the results in a CSV file.
+                                <br>We also pulled ~4,000 news articles about Bitcoin that goes back to 2016 to run sentiment analysis with a pre-trained model FinBERT. This model built on BERT, a machine learning technique for natural language processing, and focused on financial languages. This mean we could load in our news articles and the model would loop through each one and calculate a score to determine if the article is positive, neutral, or negative. The model had to be trained first by downloading a phrasebank online. We then set up model training in a Jupyter notebook, where we've set up training parameters. Once everything was set up, we then ran the analysis through all the news article and exported the results in a CSV file.
                             
                             </p></div>
                         </div>
@@ -145,9 +145,9 @@
                                 <h4>Transform:</h4>
                                 <h4 class="subheading">Data Clean Up & Analysis</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">The most effective way to manipulate our data is PostgreSQL. We put together the SQL schemas using QuickDBD diagram tool. The three tables were then loaded: Yahoo Finance market data, daily news articles, and the sentiment analysis. We ran a SQL query to join all three in an easy to understand way that our JavaScript could read and plot.
+                            <div class="timeline-body"><p class="text-muted">The most effective way to manipulate our data is PostgreSQL. We put together the SQL schemas using QuickDBD diagram tool. The three tables were then loaded: BTC market data, daily news articles, and the sentiment analysis. We ran a SQL query to join all three in an easy to understand way that our JavaScript could read and plot.
                             <br>
-                            <br>In order to allow the three tables to "speak" we had to first manipulate the formattng of date and time in the data from the news articless. We first merged the two separate date and time columns into one datetime column, then account for the extra hour during Daylight Saving Time (Fed press releases are all in either EST or EDT timezone). Finally, we adjusted the string to match the format Yahoo Finance scraper pulled. Once the data is clean, they are exported into a JSON format.</p></div>
+                            <br>In order to allow the three tables to "speak" we had to first manipulate the formattng of date and time in the data from the news articless. We first merged the two separate date and time columns into one datetime column, then account for the extra hour during Daylight Saving Time. Finally, we adjusted the string to match the format CryptoCompare scraper pulled. Once the data is clean, they are exported into a JSON format.</p></div>
                         </div>
                     </li>
                     <li>
