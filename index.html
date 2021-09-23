@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Crypto Crustaceans Project 3</title>
+        <title>Crypto Crustaceans Project 2</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -47,9 +47,8 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">For this project, our goal is to analyze the effect of financial news headlines along with transaction volume on Bitcoin and display the result in an easy to intpetret dashboard. We are incorporating market data from Yahoo Finance and archived financial news articles. A source on Kaggle has 4 million articles for 6,000 stocks from 2009-2020. A sentiment analysis will be performed on financial texts using a pre-trained model finBERT, which will tell us whether a headline is positive, neutral, or negative.
-
-                        The sentiment analysis will be plotted against market movement data from Yahoo Finance into color-coded monthly calendars. We will have options to toggle between different time periods to review this over time.
+                    <h3 class="section-subheading text-muted">For this project, our goal is to analyze the effect of financial news headlines along with transaction volume on Bitcoin and display the result in an easy to intpetret dashboard. We are incorporating market data and news articles from the CryptoCompare API. For future news articles we will be using a scrapper for bitcoinnews.com and will use FinBert for sentiment analysis.
+                        The sentiment analysis will be used to project future price projections based off the previous 7 days volume and news sentiment.
                     </h3>
                 </div>
                 <div class="row text-center">
@@ -66,8 +65,8 @@
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">Yahoo Finance</h4>
-                        <p class="text-muted">We've extracted market data to plot against news sentiment from Yahoo Finance. Using YFinance we were able to pull the daily performance of the SP500 going back to the start of the century. </p>
+                        <h4 class="my-3">CryptoCompare</h4>
+                        <p class="text-muted">We've extracted blockchain data, such as transaction volume and price, using the CryptoCompare API.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
@@ -122,7 +121,7 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Project Timeline</h2>
-                    <h3 class="section-subheading text-muted">Our team built on the skills and process learned during the ETL project and asked ourselves "If we had more time then, what else would we work on?" It didn't take long for all of us to agree that the wealth of information we scraped and analyzed could have been presented in a much more exciting way. With all we've learned in and out of class since ETL, we've decided to explore different ways to analyze and display our data. Here's how we did it.</h3>
+                    <h3 class="section-subheading text-muted">Our team built on the skills and process learned during the ETL project and Project 2 and asked ourselves "If we had more time then, what else would we work on?" It didn't take long for all of us to agree that the wealth of information we scraped and analyzed could have been presented in a much more exciting way. With all we've learned in and out of class since then, we've decided to explore different ways to analyze and display our data. Here's how we did it.</h3>
                 </div>
                 <ul class="timeline">
                     <li>
@@ -130,9 +129,9 @@
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>Extract:</h4>
-                                <h4 class="subheading">Yahoo Finance Scraping and FinBERT Sentiment Analysis</h4>
+                                <h4 class="subheading">CryptoCompare and FinBERT Sentiment Analysis</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">We utilized yfinance library to pull GSPC ticker data, representing the S&P 500 Index. We've decided on this ticker symbol as a proxy for the U.S. stock market volatility. The Python library allowed us to interact with Yahoo FInance's interface and pull very specific data from a large timeframe. The scraped data records the date and time, open, high, low, close, and volume traded per day. We first exported the raw data into a CSV format in order to manipulate and test the data.
+                            <div class="timeline-body"><p class="text-muted">We utilized CryptoCompare API to pull blockchain data for Bitcoin. The API allowed us to pull very specific data from a large timeframe. The scraped data records the date and time, open, high, low, close, and volume traded per day. We first exported the raw data into a CSV format in order to manipulate and test the data.
                                 <br>
                                 <br>We also pulled ~1 million news articles about finance that goes back 20 years to run sentiment analysis with a pre-trained model FinBERT. This model built on BERT, a machine learning technique for natural language processing, and focused on financial languages. This mean we could load in our news articles and the model would loop through each one and calculate a score to determine if the article is positive, neutral, or negative. The model had to be trained first by downloading a phrasebank online. We then set up model training in a Jupyter notebook, where we've set up training parameters. Once everything was set up, we then ran the analysis through all the news article and exported the results in a CSV file.
                             
