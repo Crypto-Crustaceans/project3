@@ -1,9 +1,7 @@
 **Crypto-Crustaceans Final Project**
 # Financial Sentiment Analysis Dashboard
 
-Final product is located in the "final_app" folder in the Github.
-
-Presentation: https://docs.google.com/presentation/d/1lsu6Xndhxg80TxKyHOm5AeDZA_6NABzDVAeufZeNbRA/edit?usp=sharing
+Presentation: https://docs.google.com/presentation/d/1gr_ywK173DjwX9ZGD-0iNdPRKY0OhHsTNKr5TaP-5_U/edit#slide=id.p
 
 Published website: https://crypto-crustaceans.github.io/project3/
 
