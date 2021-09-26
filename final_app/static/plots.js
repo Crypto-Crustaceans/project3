@@ -1,102 +1,33 @@
 var svg = d3.select("#d3calendar")
   .append("svg")
 
-var lineCanvas = d3.select("#chartjsline")
-  .append("canvas")
-  .attr("id", "linePlot")
+// var lineCanvas = d3.select("#chartjsline")
+//   .append("canvas")
+//   .attr("id", "linePlot")
 
-var scatterCanvas = d3.select("#chartjsscatter")
-  .append("canvas")
-  .attr("id", "scatterPlot")
+// var scatterCanvas = d3.select("#chartjsscatter")
+//   .append("canvas")
+//   .attr("id", "scatterPlot")
 
 // create group for filter labels
-var yearSelectorGroup = d3.select("#plotFilters")
+var selectorGroup = d3.select("#plotFilters")
   .append("svg")
   .append("g")
 
-var allLabel = yearSelectorGroup.append("text")
-.attr("x", 20)
+var label_1day = selectorGroup.append("text")
+.attr("x", 150)
 .attr("y", 25)
-.attr("value", "all") // value to grab for event listener
+.attr("value", "prediction_1day") // value to grab for event listener
 .classed("active", true)
-.text("All");
+.text("1-Day Prediction Model");
 
-var label2020 = yearSelectorGroup.append("text")
-.attr("x", 70)
-.attr("y", 25)
-.attr("value", "2020") // value to grab for event listener
+var label_7day = selectorGroup.append("text")
+.attr("x", 150)
+.attr("y", 50)
+.attr("value", "prediction_7day") // value to grab for event listener
 .classed("inactive", true)
-.text("2020");
+.text("7-Day Prediction Model");
 
-var label2019 = yearSelectorGroup.append("text")
-.attr("x", 120)
-.attr("y", 25)
-.attr("value", "2019") // value to grab for event listener
-.classed("inactive", true)
-.text("2019");
-
-var label2018 = yearSelectorGroup.append("text")
-.attr("x", 170)
-.attr("y", 25)
-.attr("value", "2018") // value to grab for event listener
-.classed("inactive", true)
-.text("2018");
-
-var label2017 = yearSelectorGroup.append("text")
-.attr("x", 220)
-.attr("y", 25)
-.attr("value", "2017") // value to grab for event listener
-.classed("inactive", true)
-.text("2017");
-
-var label2016 = yearSelectorGroup.append("text")
-.attr("x", 270)
-.attr("y", 25)
-.attr("value", "2016") // value to grab for event listener
-.classed("inactive", true)
-.text("2016");
-
-var label2015 = yearSelectorGroup.append("text")
-.attr("x", 20)
-.attr("y", 75)
-.attr("value", "2015") // value to grab for event listener
-.classed("inactive", true)
-.text("2015");
-
-var label2014 = yearSelectorGroup.append("text")
-.attr("x", 70)
-.attr("y", 75)
-.attr("value", "2014") // value to grab for event listener
-.classed("inactive", true)
-.text("2014");
-
-var label2013 = yearSelectorGroup.append("text")
-.attr("x", 120)
-.attr("y", 75)
-.attr("value", "2013") // value to grab for event listener
-.classed("inactive", true)
-.text("2013");
-
-var label2012 = yearSelectorGroup.append("text")
-.attr("x", 170)
-.attr("y", 75)
-.attr("value", "2012") // value to grab for event listener
-.classed("inactive", true)
-.text("2012");
-
-var label2011 = yearSelectorGroup.append("text")
-.attr("x", 220)
-.attr("y", 75)
-.attr("value", "2011") // value to grab for event listener
-.classed("inactive", true)
-.text("2011");
-
-var label2010 = yearSelectorGroup.append("text")
-.attr("x", 270)
-.attr("y", 75)
-.attr("value", "2010") // value to grab for event listener
-.classed("inactive", true)
-.text("2010");
 
 //var selectedValue = "all"
 
@@ -117,29 +48,29 @@ var json = d3.json("data/calendar").then(function(response) {
     };
   })
 
-  var lineData = response.map(function(d) {
+  // var lineData = response.map(function(d) {
         
-    return {
-        x: new Date(d.date),
-        y: Math.round(+d.close,0)
-    };
-  })
+  //   return {
+  //       x: new Date(d.date),
+  //       y: Math.round(+d.close,0)
+  //   };
+  // })
 
-  var scatterData = response.map(function(d) {
+  // var scatterData = response.map(function(d) {
         
-    return {
-      x: +d.sentiment,
-      y: +((d.close - d.open) / d.open),
-      date: new Date(d.date),
-    };
-  })
+  //   return {
+  //     x: +d.sentiment,
+  //     y: +((d.close - d.open) / d.open),
+  //     date: new Date(d.date),
+  //   };
+  // })
   
-  d3Calendar(calendarData, "all");
+  d3Calendar(calendarData, "prediction_1day");
   // chartjsLine(lineData, "all");
   // chartjsScatter(scatterData, "all")
 
   // event listener
-  yearSelectorGroup.selectAll("text")
+  selectorGroup.selectAll("text")
     .on("click", function() {
       // get value of selection
       var value = d3.select(this).attr("value");
@@ -151,31 +82,24 @@ var json = d3.json("data/calendar").then(function(response) {
       
 
       // changes classes to change bold text
-      if (selectedValue === "all") {
+      if (selectedValue === "prediction_1day") {
         d3.selectAll(".active")
           .classed("active", false)
           .classed("inactive", true)
-        allLabel
+        label_1day
           .classed("active", true)
           .classed("inactive", false)
       }
-      else if (selectedValue == 2020) {
+      else if (selectedValue == "prediction_7day") {
         d3.selectAll(".active")
         .classed("active", false)
         .classed("inactive", true)
-      label2020
-        .classed("active", true)
-        .classed("inactive", false)
-      }
-      else if (selectedValue == 2019) {
-        d3.selectAll(".active")
-        .classed("active", false)
-        .classed("inactive", true)
-      label2019
+      label_7day
         .classed("active", true)
         .classed("inactive", false)
       }
       }
+
       // run calendar function with selected year
       d3Calendar(calendarData, selectedValue) 
       // chartjsLine(lineData, selectedValue)
@@ -184,19 +108,19 @@ var json = d3.json("data/calendar").then(function(response) {
     });
   });
 
-function d3Calendar(data, startYear) {
+function d3Calendar(data, selectedData) {
 
   svg.selectAll("*").remove();
 
   var years = d3.groups(data, d => d.date.getUTCFullYear()).reverse();
   
+  // if (startYear == "all") {
+  filteredYears = years;
+  // }
+  // else {
+  //   filteredYears = years.filter(d => d[0] == startYear);
+  // }
 
-  if (startYear == "all") {
-    filteredYears = years;
-  }
-  else {
-    filteredYears = years.filter(d => d[0] == startYear);
-  }
 
   var cellSize = 17;
   var width = 2000;
@@ -220,8 +144,16 @@ function d3Calendar(data, startYear) {
   var formatMonth = d3.utcFormat("%b");
   // const actualMax = d3.quantile(data, 0.9975, d => Math.abs(d.plus_1day_actual_perc));
   // const predictedMax = d3.quantile(data, 0.9975, d => Math.abs(d.plus_1day_predicted_perc));
-  const actualMax = .20;
-  const predictedMax = .20;
+  
+  if (selectedData == "prediction_1day") {
+    var actualMax = .20;
+    var predictedMax = .20;
+  }
+  else {
+  var actualMax = .40;
+  var predictedMax = .40;
+  }
+
   var actualColor = d3.scaleSequential(d3.interpolatePiYG).domain([-actualMax, +actualMax]);
   var predictedColor = d3.scaleSequential(d3.interpolatePiYG).domain([-predictedMax, +predictedMax]);
 
@@ -252,29 +184,60 @@ function d3Calendar(data, startYear) {
           .attr("dy", "0.31em")
           .text(formatDay);
       
-      year.append("g")
-        .selectAll("polygon")
-        .data(([, values]) => values.filter(d => ![0, 6].includes(d.date.getUTCDay())))
-        .join("polygon")
-          .attr("points", function(d) {
-              return `${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5 + cellSize - 1} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5 + cellSize - 1}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5 + cellSize - 1}`
-          })
-          .attr("fill", d => actualColor(d.plus_1day_actual_perc))
-        .append("title")
-          .text(d => `${formatDate(d.date)}
-BTC +1 Day Change (Actual): ${formatPerc(d.plus_1day_actual_perc)}`);
+      if (selectedData == "prediction_1day") {
+        year.append("g")
+          .selectAll("polygon")
+          .data(([, values]) => values.filter(d => ![0, 6].includes(d.date.getUTCDay())))
+          .join("polygon")
+            .attr("points", function(d) {
+                return `${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5 + cellSize - 1} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5 + cellSize - 1}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5 + cellSize - 1}`
+            })
+            .attr("fill", d => actualColor(d.plus_1day_actual_perc))
+          .append("title")
+            .text(d => `${formatDate(d.date)}
+BTC +1 Day Change (Actual): ${formatPerc(d.plus_1day_actual_perc)}`)
+      }
 
-      year.append("g")
-      .selectAll("polygon")
-      .data(([, values]) => values.filter(d => ![0, 6].includes(d.date.getUTCDay())))
-      .join("polygon")
-      .attr("points", function(d) {
-          return `${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5 + cellSize - 1}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5 + cellSize - 1}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5 + cellSize - 1}`
-      })
-      .attr("fill", d => predictedColor(d.plus_1day_predicted_perc))
-      .append("title")
-      .text(d => `${formatDate(d.date)}
+      else {
+        year.append("g")
+          .selectAll("polygon")
+          .data(([, values]) => values.filter(d => ![0, 6].includes(d.date.getUTCDay())))
+          .join("polygon")
+            .attr("points", function(d) {
+                return `${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5 + cellSize - 1} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5 + cellSize - 1}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5 + cellSize - 1}`
+            })
+            .attr("fill", d => actualColor(d.plus_7day_actual_perc))
+          .append("title")
+            .text(d => `${formatDate(d.date)}
+BTC +1 Day Change (Actual): ${formatPerc(d.plus_7day_actual_perc)}`)
+      }
+
+      if (selectedData == "prediction_1day") {
+        year.append("g")
+          .selectAll("polygon")
+          .data(([, values]) => values.filter(d => ![0, 6].includes(d.date.getUTCDay())))
+          .join("polygon")
+          .attr("points", function(d) {
+              return `${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5 + cellSize - 1}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5 + cellSize - 1}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5 + cellSize - 1}`
+          })
+          .attr("fill", d => predictedColor(d.plus_1day_predicted_perc))
+          .append("title")
+          .text(d => `${formatDate(d.date)}
 BTC +1 Day Change (Fit Model): ${formatPerc(d.plus_1day_predicted_perc)}`);
+      }
+      else {
+        year.append("g")
+          .selectAll("polygon")
+          .data(([, values]) => values.filter(d => ![0, 6].includes(d.date.getUTCDay())))
+          .join("polygon")
+          .attr("points", function(d) {
+              return `${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5 + cellSize - 1}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5} ${timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 0.5 + cellSize - 1}, ${countDay(d.date.getUTCDay()) * cellSize + 0.5 + cellSize - 1}`
+          })
+          .attr("fill", d => predictedColor(d.plus_7day_predicted_perc))
+          .append("title")
+          .text(d => `${formatDate(d.date)}
+BTC +1 Day Change (Fit Model): ${formatPerc(d.plus_7day_predicted_perc)}`);  
+      }
 
       const month = year.append("g")
         .selectAll("g")

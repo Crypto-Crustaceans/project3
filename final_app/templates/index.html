@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Crypto Crustaceans Project 2</title>
+        <title>Crypto Crustaceans Project 3</title>
         <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -26,9 +26,8 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#predictions">Predictions</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-			            <li class="nav-item"><a class="nav-link" href="#filters">Filters</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#calendar">Calendar</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#plot">Plot</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#model">Model</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="#plot">Plot</a></li> -->
                         <li class="nav-item"><a class="nav-link" href="#project">Project</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                     </ul>
@@ -40,7 +39,7 @@
         <header class="masthead">
             <div class="container">
                 <div class="masthead-subheading">Crypto Crustaceans Project 3</div>
-                <div class="masthead-heading text-uppercase">Financial Sentiment Analysis Dashboard</div>
+                <div class="masthead-heading text-uppercase">Bitcoin Price Prediction Model</div>
             </div>
         </header>
 
@@ -52,59 +51,39 @@
                     <h3 class="section-subheading text-muted">Predicting the price of Bitcoin using market data, blockchain data, social data, and news sentiment.</h3>
                 </div>
                 <div class="row text-center">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal">Current Price</h4>
                             </div>
-                            <div class="card-body">
-                                <h1 class="card-title pricing-card-title">$0<br></h1>
-                                <h1 class="card-title pricing-card-title"><small class="text-muted">_</small></h1>
-                                <!-- <ul class="list-unstyled mt-3 mb-4">
-                                <li>10 users included</li>
-                                <li>2 GB of storage</li>
-                                <li>Email support</li>
-                                <li>Help center access</li>
-                                </ul> -->
+                            <div class="card-body" id="current-price">
+                                <h1 class="card-title pricing-card-title price">$0<br></h1>
+                                <h1 class="card-title pricing-card-title percent"><small class="text-muted">_</small></h1>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal">+1 Day Prediction</h4>
                             </div>
-                            <div class="card-body">
-                                <h1 class="card-title pricing-card-title">$0</h1>
-                                <h1 class="card-title pricing-card-title"><small class="text-muted">%</small></h1>
-                                <!-- <ul class="list-unstyled mt-3 mb-4">
-                                <li>10 users included</li>
-                                <li>2 GB of storage</li>
-                                <li>Email support</li>
-                                <li>Help center access</li> -->
-                                </ul>
+                            <div class="card-body" id="prediction-1day">
+                                <h1 class="card-title pricing-card-title price">$0</h1>
+                                <h1 class="card-title pricing-card-title percent"><small class="text-muted">%</small></h1>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <div class="card-header">
-                                <h4 class="my-0 font-weight-normal">+7 Days Prediction</h4>
+                                <h4 class="my-0 font-weight-normal">+7 Day Prediction</h4>
                             </div>
-                            <div class="card-body">
-                                <h1 class="card-title pricing-card-title">$0</h1>
-                                <h1 class="card-title pricing-card-title"><small class="text-muted">%</small></h1>
-                                <!-- <ul class="list-unstyled mt-3 mb-4">
-                                <li>10 users included</li>
-                                <li>2 GB of storage</li>
-                                <li>Email support</li>
-                                <li>Help center access</li> -->
-                                </ul>
+                            <div class="card-body" id="prediction-7day">
+                                <h1 class="card-title pricing-card-title price">$0</h1>
+                                <h1 class="card-title pricing-card-title percent"><small class="text-muted">%</small></h1>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3"></div>
                 </div>
             </div>
         </section>
@@ -147,24 +126,14 @@
                 </div>
             </div>
         </section>
-	
-	<!-- Filters-->	
-        <section class="page-section bg-light" id="filters">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Filter by Year</h2>
-                    <h3 class="section-subheading text-muted">Apply filters to the below visualizations.</h3>
-                    <div id="plotFilters"></div>
-                </div>
-            </div>
-        </section>
-	
+		
         <!-- Calendar Grid-->
-        <section class="page-section bg-light" id="calendar">
+        <section class="page-section bg-light" id="model">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Financial Calendar</h2>
+                    <h2 class="section-heading text-uppercase">Prediction Model</h2>
                     <h3 class="section-subheading text-muted">This calendar shows financial news sentiment (upper right-hand corners) and market movements (lower left-hand corners). Green blocks represent positive news headlines (on average) and positive price movements per day. Pink blocks represent negative news headlines (on average) and negative price movements per day.<br>The calendar was created using D3.js</h3>
+                    <div id="plotFilters"></div>
                 </div>
                     <div id="d3calendar" style=" display: flex; justify-content: center; align-items: center;"></div>
             </div>
@@ -172,7 +141,7 @@
         </section>
 	
         <!-- Plot-->
-        <section class="page-section bg-light" id="plot">
+        <!-- <section class="page-section bg-light" id="plot">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Plot</h2>
@@ -189,7 +158,7 @@
                 </div>
                 <div id="chartjsscatter"></div>
             </div>
-        </section>
+        </section> -->
 		
         <!-- Project-->
         <section class="page-section" id="project">
@@ -311,5 +280,6 @@
 		<script src="https://d3js.org/d3-array.v2.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
 		<script type="text/javascript" src="static/plots.js"></script>
+		<script type="text/javascript" src="static/predictions.js"></script>
     </body>
 </html>
