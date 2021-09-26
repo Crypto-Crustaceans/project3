@@ -11,8 +11,6 @@ var json = d3.json("data/predictions").then(function(response) {
     prediction_1day_perc = (prediction_1day - current_price) / current_price
     prediction_7day_perc = (prediction_7day - current_price) / current_price
 
-    console.log((prediction_1day - current_price) / current_price)
-
     d3.select("#current-price").select(".price").text(`${formatAmt(current_price)}`)
     d3.select("#prediction-1day").select(".price").text(`${formatAmt(prediction_1day)}`)
     d3.select("#prediction-7day").select(".price").text(`${formatAmt(prediction_7day)}`)

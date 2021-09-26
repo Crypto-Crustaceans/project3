@@ -195,7 +195,7 @@ function d3Calendar(data, selectedData) {
             .attr("fill", d => actualColor(d.plus_1day_actual_perc))
           .append("title")
             .text(d => `${formatDate(d.date)}
-BTC +1 Day Change (Actual): ${formatPerc(d.plus_1day_actual_perc)}`)
+Actual Change (+1 Day): ${formatPerc(d.plus_1day_actual_perc)}`)
       }
 
       else {
@@ -209,7 +209,7 @@ BTC +1 Day Change (Actual): ${formatPerc(d.plus_1day_actual_perc)}`)
             .attr("fill", d => actualColor(d.plus_7day_actual_perc))
           .append("title")
             .text(d => `${formatDate(d.date)}
-BTC +1 Day Change (Actual): ${formatPerc(d.plus_7day_actual_perc)}`)
+Actual Change (+7 Days): ${formatPerc(d.plus_7day_actual_perc)}`)
       }
 
       if (selectedData == "prediction_1day") {
@@ -223,7 +223,7 @@ BTC +1 Day Change (Actual): ${formatPerc(d.plus_7day_actual_perc)}`)
           .attr("fill", d => predictedColor(d.plus_1day_predicted_perc))
           .append("title")
           .text(d => `${formatDate(d.date)}
-BTC +1 Day Change (Fit Model): ${formatPerc(d.plus_1day_predicted_perc)}`);
+Model Fit (+1 Day): ${formatPerc(d.plus_1day_predicted_perc)}`);
       }
       else {
         year.append("g")
@@ -236,7 +236,7 @@ BTC +1 Day Change (Fit Model): ${formatPerc(d.plus_1day_predicted_perc)}`);
           .attr("fill", d => predictedColor(d.plus_7day_predicted_perc))
           .append("title")
           .text(d => `${formatDate(d.date)}
-BTC +1 Day Change (Fit Model): ${formatPerc(d.plus_7day_predicted_perc)}`);  
+Model Fit (+7 Days): ${formatPerc(d.plus_7day_predicted_perc)}`);  
       }
 
       const month = year.append("g")

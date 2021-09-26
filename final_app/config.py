@@ -1,3 +1,3 @@
 # cryptocompare api key
 
-api_key = 'enter api key here'
+api_key = 'api key here'

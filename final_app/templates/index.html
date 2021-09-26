@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Crypto Crustaceans Project 3</title>
+        <title>Crypto Crustaceans</title>
         <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -48,7 +48,7 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">BTC Price Predictions</h2>
-                    <h3 class="section-subheading text-muted">Predicting the price of Bitcoin using market data, blockchain data, social data, and news sentiment.</h3>
+                    <h3 class="section-subheading text-muted"></h3>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4">
@@ -93,35 +93,52 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">For our final project, our goal is to analyze the effect of financial news headlines along with transaction volume on Bitcoin and display the result in an easy to intpetret dashboard. We are incorporating market data and news articles from the CryptoCompare API. For future news articles we will be using a scrapper for bitcoinnews.com and will use FinBert for sentiment analysis.
-
-                        The sentiment analysis will be used to project future price projections based off the previous 7 days volume and news sentiment.
+                    <h3 class="section-subheading text-muted">
+                        Our goal was to create a model that could make accurate predictions for the price of Bitcoin.<br>
+                        We trained our model using historical Bitcoin market data, blockchain data, and social data,<br>
+                        as well as using the results of a sentiment analysis of Bitcoin news headlines.
                     </h3>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-terminal fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">FinBERT Sentiment Analysis</h4>
-                        <p class="text-muted">FinBERT's engine is a pre-trained sentiment analysis model that analyzes sentiment of financial text. It is built by further training the BERT language model in the finance domain. We accessed a large financial corpus to analyze close to 4,000 news articles.</p>
+                        <h4 class="my-3">CryptoCompare API</h4>
+                        <p class="text-muted">
+                            We used the cryptocompare.com API to retrieve 
+                            historical market, blockchain, and social data, 
+                            and we scraped news.bitcoin.com to obtain historical news headlines. 
+                            We also use the API to retrieve current data and recent news articles, 
+                            so that the model can make live predictions. 
+                        </p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-terminal fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">CryptoCompare</h4>
-                        <p class="text-muted">We've extracted blockchain data, such as transaction volume and price, using the CryptoCompare API.</p>
+                        <h4 class="my-3">Scikit-learn & NLTK</h4>
+                        <p class="text-muted">
+                            Scikit-learn is a ML library featuring various classification, regression, and clustering algorithms. 
+                            We used historical data to train a regression algorithm (to make price predictions) and 
+                            a classification algorithm (to determine the postive, negative, or neutral sentiment of news headlines). 
+                            NLTK is a suite of NLP libraries, which we used as part of our preprocessing pipeline.    
+                        </p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-eye fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3">JavaScript Visualizations</h4>
-                        <p class="text-muted">We leveraged two JS libraries to build our visualizations. D3.js combines powerful visualization components and a data-driven approach to DOM manipulation to create custom, dynamic, and interactive data visualizations. Chart.js is used to simple, clean, and engaging HTML5 based JavaScript charts.</p>
+                        <h4 class="my-3">JavaScript</h4>
+                        <p class="text-muted">
+                            We used d3.js to create a calendar visualization showing how our model fits to its training data. 
+                            D3.js combines powerful visualization components 
+                            and a data-driven approach to DOM manipulation to create custom, dynamic, 
+                            and interactive data visualizations.                        
+                        </p>
                     </div>
                 </div>
             </div>
@@ -132,7 +149,14 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Prediction Model</h2>
-                    <h3 class="section-subheading text-muted">This calendar shows financial news sentiment (upper right-hand corners) and market movements (lower left-hand corners). Green blocks represent positive news headlines (on average) and positive price movements per day. Pink blocks represent negative news headlines (on average) and negative price movements per day.<br>The calendar was created using D3.js</h3>
+                    <h3 class="section-subheading text-muted">
+                        This calendar visualizes how our prediction model fits to its training data.<br> <br>
+                        Each square shows the historical price of Bitcoin with a 1-day or 7-day offset for any given date (bottom-left corner) 
+                        as well as the output of our prediction model using training data (top-right corner).
+                        Green blocks represent positive price movement and pink blocks represent negative price movement.<br> <br>
+                        The visualization was created using d3.js 
+                        and can be filtered to show the fit of our 1-day or 7-day prediction model.
+                    </h3>
                     <div id="plotFilters"></div>
                 </div>
                     <div id="d3calendar" style=" display: flex; justify-content: center; align-items: center;"></div>
@@ -165,69 +189,89 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Project Timeline</h2>
-                    <h3 class="section-subheading text-muted">Our team built on the skills and process learned during our previous projects and asked ourselves "If we had more time then, what else would we work on?" It didn't take long for all of us to agree that the wealth of information we scraped and analyzed could have been presented in a much more exciting way. With all we've learned in and out of class since then, we've decided to explore different ways to analyze and display our data. Here's how we did it.</h3>
+                    <h3 class="section-subheading text-muted"></h3>
                 </div>
                 <ul class="timeline">
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="static/assets/img/about/1.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>Extract:</h4>
-                                <h4 class="subheading">CryptoCompare and FinBERT Sentiment Analysis</h4>
+                                <h4>Getting Data:</h4>
+                                <h4 class="subheading">CryptoCompare API <br>& Web Scraping</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">We utilized CryptoCompare API to pull blockchain data for Bitcoin. The API allowed us to pull very specific data from a large timeframe. The scraped data records the date and time, open, high, low, close, and volume traded per day. We first exported the raw data into a CSV format in order to manipulate and test the data.
-                                <br>
-                                <br>We also pulled ~4,000 news articles about Bitcoin that goes back to 2016 to run sentiment analysis with a pre-trained model FinBERT. This model built on BERT, a machine learning technique for natural language processing, and focused on financial languages. This mean we could load in our news articles and the model would loop through each one and calculate a score to determine if the article is positive, neutral, or negative. The model had to be trained first by downloading a phrasebank online. We then set up model training in a Jupyter notebook, where we've set up training parameters. Once everything was set up, we then ran the analysis through all the news article and exported the results in a CSV file.
-                            
-                            </p></div>
+                            <div class="timeline-body"><p class="text-muted">
+                                We used the cryptocompare.com API to retrieve historical Bitcoin market data (daily open and close prices, volume etc.), 
+                                blockchain data (number of transactions, number of large transactions, transaction value, etc.), 
+                                social data (e.g., number of reddit posts, etc.). 
+                                The historical data retrieved via the API went back several years.<br> <br>
+                                We created a web scraping tool to grab thousands of historical Bitcoin news headlines 
+                                going back several years from news.bitcoin.com.<br> <br>
+                                We also used the cryptocompare.com API to retrieve current market data (including real-time price), 
+                                blockchain data, social data, and news articles.                            
+
+                            </p>
+                        </div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="static/assets/img/about/2.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>Transform:</h4>
-                                <h4 class="subheading">Data Clean Up & Analysis</h4>
+                                <h4>Data Clean Up & Preprocessing:</h4>
+                                <h4 class="subheading"></h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">The most effective way to manipulate our data is PostgreSQL. We put together the SQL schemas using QuickDBD diagram tool. The three tables were then loaded: BTC market data, daily news articles, and the sentiment analysis. We ran a SQL query to join all three in an easy to understand way that our JavaScript could read and plot.
-                            <br>
-                            <br>In order to allow the three tables to "speak" we had to first manipulate the formattng of date and time in the data from the news articless. We first merged the two separate date and time columns into one datetime column, then account for the extra hour during Daylight Saving Time. Finally, we adjusted the string to match the format CryptoCompare scraper pulled. Once the data is clean, they are exported into a JSON format.</p></div>
+                            <div class="timeline-body"><p class="text-muted">
+                                We cleaned, merged, and aggregated the historical market, blockchain, and social data to create our training data.<br> <br>
+                                Additionally, we used NLTK to perform preprocessing steps on our historical news headlines including 
+                                tokenizing, stemming, removing punctuation and numbers, formatting the text as lowercase, 
+                                excluding stop-words, and finally vectorizing the text.<br> <br>
+                                These preprocessing steps were necessary to feed the headlines to the classification algorithm. 
+                                The results of the classification algorithm’s sentiment analysis were also merged into our training data.                               
+                            </p>
+                        </div>
                         </div>
                     </li>
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="static/assets/img/about/3.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>Load:</h4>
-                                <h4 class="subheading">Putting Everything Together with SQLAlchemy and Flask</h4>
+                                <h4>Creating the Model:</h4>
+                                <h4 class="subheading">SVM Classifier & <br>Random Forest Regressor</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">We created a Flask application to serve up data and power our JavaScript visualizations. The Flask app queries data from our PostgreSQL database and converts it into JSON format. The JSON can be accessed at the '/data' route by our JavaScript code. The '/home' route accesses our HTML page visualizations. 
-                                
-                            </p></div>
+                            <div class="timeline-body"><p class="text-muted">
+                                After preprocessing, the news headlines were split into training and test sets to evaluate the performance of various classifiers. 
+                                The SVM classifier performed best, and we chose it as the final classification algorithm.<br> <br>
+                                The final merged historical dataset was then split into training and test sets to evaluate the performance of various regressors. 
+                                The Random Forest regressor performed best, and we chose it as the final regression algorithm.<br> <br>
+                                Additionally, we performed grid searches to hyper-tune the models and select the best algorithm parameters. 
+                                Once finalized, the trained algorithms were saved for future use.
+                            </p>
+                        </div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="static/assets/img/about/4.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>Visualization:</h4>
-                                <h4 class="subheading">Plotting with JavaScript and Sending the Project Live</h4>
+                                <h4>The Final App:</h4>
+                                <h4 class="subheading">Flask Server</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">There is one visualtization our group decided on for this dataset. The first is a financial calendar that shows BTC movement for the day using a colorscale from green to red along with our model's prediction for the day. Green represents the market closing higher than prior day, and red represents the opposite. The two triangles connect to form a square that represents a day.
-                                <br>
-                                <br>
-                                
+                            <div class="timeline-body"><p class="text-muted">
+                                We created a Flask application to host a web page and make live Bitcoin price predictions.<br> <br>
+                                The application retrieves current data from the cryptocompare.com API, 
+                                and the data is fed to our pre-trained algorithms to make live predictions.
+                                D3.js is used to update this web page with the real-time Bitcoin price as well as our 1-day and 7-day price predictions. 
+                                D3.js is also used to create the calendar visualization on this web page.
                             </p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
                             <h4>
-                                Explore
                                 <br />
-                                Our
+                                Cheers!
                                 <br />
-                                Plots!
+
                             </h4>
                         </div>
                     </li>
