@@ -134,10 +134,11 @@
                         </span>
                         <h4 class="my-3">JavaScript</h4>
                         <p class="text-muted">
-                            We used d3.js to create a calendar visualization showing how our model fits to its training data. 
                             D3.js combines powerful visualization components 
                             and a data-driven approach to DOM manipulation to create custom, dynamic, 
-                            and interactive data visualizations.                        
+                            and interactive data visualizations.
+                            We used d3.js to create a calendar visualization showing how our model's predictions using test data 
+                            compared to actual historical prices.                          
                         </p>
                     </div>
                 </div>
@@ -150,9 +151,9 @@
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Prediction Model</h2>
                     <h3 class="section-subheading text-muted">
-                        This calendar visualizes how our prediction model fits to its training data.<br> <br>
+                        This calendar visualizes the results of our prediction model using test data.<br> <br>
                         Each square shows the historical price of Bitcoin with a 1-day or 7-day offset for any given date (bottom-left corner) 
-                        as well as the output of our prediction model using training data (top-right corner).
+                        as well as the output of our prediction model using test data (top-right corner).
                         Green blocks represent positive price movement and pink blocks represent negative price movement.<br> <br>
                         The visualization was created using d3.js 
                         and can be filtered to show the fit of our 1-day or 7-day prediction model.
