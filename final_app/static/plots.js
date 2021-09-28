@@ -223,7 +223,7 @@ Actual Change (+7 Days): ${formatPerc(d.plus_7day_actual_perc)}`)
           .attr("fill", d => predictedColor(d.plus_1day_predicted_perc))
           .append("title")
           .text(d => `${formatDate(d.date)}
-Model Fit (+1 Day): ${formatPerc(d.plus_1day_predicted_perc)}`);
+Test Prediction (+1 Day): ${formatPerc(d.plus_1day_predicted_perc)}`);
       }
       else {
         year.append("g")
@@ -236,7 +236,7 @@ Model Fit (+1 Day): ${formatPerc(d.plus_1day_predicted_perc)}`);
           .attr("fill", d => predictedColor(d.plus_7day_predicted_perc))
           .append("title")
           .text(d => `${formatDate(d.date)}
-Model Fit (+7 Days): ${formatPerc(d.plus_7day_predicted_perc)}`);  
+Test Prediction (+7 Days): ${formatPerc(d.plus_7day_predicted_perc)}`);  
       }
 
       const month = year.append("g")
