@@ -1,3 +1,4 @@
 # cryptocompare api key
+# free api key here: https://min-api.cryptocompare.com/
 
-api_key = 'af76d0ae15fb6daeb793152850121db63e345ac66073bd681ef3c40ee068ba2a'
+api_key = 'api key'
